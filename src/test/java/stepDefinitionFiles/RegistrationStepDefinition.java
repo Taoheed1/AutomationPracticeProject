@@ -3,9 +3,13 @@ package stepDefinitionFiles;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pageObjectModels.RegistrationObjectModel;
 import testData.DataSet;
+
+import static junit.framework.TestCase.assertEquals;
 
 public class RegistrationStepDefinition {
     WebDriver driver=null;
@@ -47,7 +51,10 @@ public class RegistrationStepDefinition {
     @Then("redirect Them into detail page")
     public void redirect_Them_into_detail_page() {
 
+        String subheading = "YOUR PERSONAL INFORMATION";
+       Assert.assertEquals(subheading,RegistrationObjectModel.sub_heading(driver));
     }
+
 
     @When("user enters valid details in to fields")
     public void user_enters_valid_details_in_to_fields() {

@@ -19,6 +19,13 @@ public class RegistrationObjectModel {
        return  driver.findElement(By.cssSelector("button[name='SubmitCreate']"));
     }
 
+    public static WebElement sub_heading (WebDriver driver)
+
+    {
+       // return driver.findElement(By.cssSelector("h3[class='page-subheading']"));
+        return driver.findElement(By.xpath("//*[@id=\"noSlide\"]/h1"));
+    }
+
 //    public static WebElement title_mr_radio_buttons (WebDriver driver)
 //    {
 //       return driver.findElement(By.id("id_gender1"));
