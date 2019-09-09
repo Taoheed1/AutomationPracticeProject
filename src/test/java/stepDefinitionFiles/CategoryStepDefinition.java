@@ -30,7 +30,7 @@ public class CategoryStepDefinition {
 
     @Then("redirect them to women category")
     public void redirect_them_to_women_category() {
-        Assert.assertEquals("Women", HomePage.subCategory(driver).getText());
+        Assert.assertEquals("WOMEN ", HomePage.womenCategoryName(driver).getText());
     }
 
     // Second feature
@@ -47,11 +47,11 @@ public class CategoryStepDefinition {
     // Third feature
     @When("the user clicks on T-shirt tab")
     public void the_user_clicks_on_T_shirt_tab() {
-        HomePage.tshirtCategory(driver).click();
+        HomePage.tShirtCategory(driver).click();
     }
 
     @Then("redirect them to T-shirt category")
     public void redirect_them_to_T_shirt_category() {
-        Assert.assertEquals("T-SHIRTS ", HomePage.tshirtCategoryName(driver).getText());
+        Assert.assertEquals("T-SHIRTS ", HomePage.tShirtCategoryName(driver).getText());
     }
 }

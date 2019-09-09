@@ -7,26 +7,26 @@ import org.openqa.selenium.WebElement;
 public class HomePage {
 
     public static WebElement womenCategory(WebDriver driver){
-        return driver.findElement(By.className("sf-with-ul"));
+        return driver.findElement(By.linkText("WOMEN"));
     }
 
-    public static WebElement subCategory(WebDriver driver){
-        return driver.findElement(By.className("navigation_page"));
+    public static WebElement womenCategoryName(WebDriver driver){
+        return driver.findElement(By.className("cat-name"));
     }
 
     public static WebElement dressesCategory(WebDriver driver){
-        return driver.findElement(By.xpath("//*[@id=\"block_top_menu\"]/ul/li[2]/a"));
+        return driver.findElement(By.linkText("DRESSES"));
     }
 
     public static WebElement dressesCategoryName(WebDriver driver){
         return driver.findElement(By.className("cat-name"));
     }
 
-    public static WebElement tshirtCategory(WebDriver driver){
-        return driver.findElement(By.xpath("//*[@id=\"block_top_menu\"]/ul/li[3]/a"));
+    public static WebElement tShirtCategory(WebDriver driver){
+        return driver.findElement(By.linkText("T-SHIRTS"));
     }
 
-    public static WebElement tshirtCategoryName(WebDriver driver){
+    public static WebElement tShirtCategoryName(WebDriver driver){
         return driver.findElement(By.className("cat-name"));
     }
 }
