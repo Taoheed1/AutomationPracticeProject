@@ -9,9 +9,6 @@ import org.junit.runner.RunWith;
         features = "src/test/java/featureFiles",
         glue = "stepDefinitionFiles"
 )
-<<<<<<< HEAD
-=======
 
->>>>>>> master
 public class CucumberTestRunner {
 }
