@@ -3,4 +3,5 @@
 
 .idea/workspace.xml
 
+# Ignore the target folder
 /target
