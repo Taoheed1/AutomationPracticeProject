@@ -6,3 +6,10 @@ Feature: Shopping Cart
     Given a user is on the home page
     When  a user clicks on the shopping cart
     Then the user should be taken to the shopping cart page
+
+  Scenario: Item(s) added to cart with correct price total
+    Given user is on a product page
+    When the user clicks "add to cart" button
+    Then the user should see that product within their shopping cart
+
+
