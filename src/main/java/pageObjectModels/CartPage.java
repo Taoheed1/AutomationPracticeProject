@@ -19,5 +19,15 @@ public class CartPage {
         return element;
     }
 
+    public static WebElement AddItemButton(WebDriver driver) {
+        element = driver.findElement(By.xpath("//*[@id=\"cart_quantity_up_1_1_0_0\"]"));
+        return element;
+    }
+
+    public static WebElement QuantityWindow(WebDriver driver) {
+        element = driver.findElement(By.xpath("/html/body/div/div[2]/div/div[3]/div/div[2]/table/tbody/tr/td[5]/input[1]"));
+        return element;
+    }
+
 
 }

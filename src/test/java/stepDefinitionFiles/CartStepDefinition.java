@@ -78,4 +78,34 @@ public class CartStepDefinition {
 
     }
 
+    @Given("user is viewing the shopping cart page")
+    public void user_is_viewing_the_shopping_cart_page() {
+        // Write code here that turns the phrase above into concrete actions
+        driver.get("http://automationpractice.com/index.php?id_category=5&controller=category");
+        Actions actions = new Actions(driver);
+        TShirtPage.TShirtAddToCartButton(driver).click();
+        TShirtPage.ProceedToCheckoutButton(driver).click();
+        String expectedCartTitle = "SHOPPING-CART SUMMARY";
+        CartPage.CartTitle(driver).getText().contains(expectedCartTitle);
+
+
+
+    }
+
+    @When("the user clicks the {string} button on a product to add another item to the basket")
+    public void the_user_clicks_the_button_on_a_product_to_add_another_item_to_the_basket(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        CartPage.AddItemButton(driver).click();
+    }
+
+    @Then("the total number of products within the basket should increase")
+    public void the_total_number_of_products_within_the_basket_should_increase() {
+        // Write code here that turns the phrase above into concrete actions
+//        throw new cucumber.api.PendingException();
+
+        String value = CartPage.QuantityWindow(driver).getAttribute("value");
+        Assert.assertEquals("1", value);
+
+    }
+
 }
