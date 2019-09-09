@@ -104,7 +104,7 @@ public class CartStepDefinition {
 //        throw new cucumber.api.PendingException();
 
         String value = CartPage.QuantityWindow(driver).getAttribute("value");
-        Assert.assertEquals("1", value);
+        Assert.assertEquals("2", value);
 
     }
 
