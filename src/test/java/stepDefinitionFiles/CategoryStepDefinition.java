@@ -22,6 +22,7 @@ public class CategoryStepDefinition {
         driver.get(DataSet.homeURL);
     }
 
+    // first feature
     @When("the user clicks on Women tab")
     public void the_user_clicks_on_Women_tab() {
         HomePage.womenCategory(driver).click();
@@ -30,5 +31,16 @@ public class CategoryStepDefinition {
     @Then("redirect them to women category")
     public void redirect_them_to_women_category() {
         Assert.assertEquals("Women", HomePage.subCategory(driver).getText());
+    }
+
+    // second feature
+    @When("the user clicks on Dresses tab")
+    public void the_user_clicks_on_Dresses_tab() {
+        HomePage.dressesCategory(driver).click();
+    }
+
+    @Then("redirect them to Dresses category")
+    public void redirect_them_to_Dresses_category() {
+        Assert.assertEquals("DRESSES ", HomePage.categoryName(driver).getText());
     }
 }

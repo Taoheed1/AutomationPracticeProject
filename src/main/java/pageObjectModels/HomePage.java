@@ -13,4 +13,12 @@ public class HomePage {
     public static WebElement subCategory(WebDriver driver){
         return driver.findElement(By.className("navigation_page"));
     }
+
+    public static WebElement dressesCategory(WebDriver driver){
+        return driver.findElement(By.xpath("//*[@id=\"block_top_menu\"]/ul/li[2]/a"));
+    }
+
+    public static WebElement categoryName(WebDriver driver){
+        return driver.findElement(By.className("cat-name"));
+    }
 }
