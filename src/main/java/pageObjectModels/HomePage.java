@@ -18,7 +18,15 @@ public class HomePage {
         return driver.findElement(By.xpath("//*[@id=\"block_top_menu\"]/ul/li[2]/a"));
     }
 
-    public static WebElement categoryName(WebDriver driver){
+    public static WebElement dressesCategoryName(WebDriver driver){
+        return driver.findElement(By.className("cat-name"));
+    }
+
+    public static WebElement tshirtCategory(WebDriver driver){
+        return driver.findElement(By.xpath("//*[@id=\"block_top_menu\"]/ul/li[3]/a"));
+    }
+
+    public static WebElement tshirtCategoryName(WebDriver driver){
         return driver.findElement(By.className("cat-name"));
     }
 }
