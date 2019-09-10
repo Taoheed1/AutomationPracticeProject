@@ -26,7 +26,6 @@ public class CartStepDefinition {
     @Given("a user is on the home page")
     public void a_user_is_on_the_home_page() {
         driver.get(DataSet.homeURL);
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @When("a user clicks on the shopping cart")
@@ -39,28 +38,34 @@ public class CartStepDefinition {
         String actualCartTitle = CartPage.CartTitle(driver).getText();
         String expectedCartTitle = "SHOPPING-CART SUMMARY";
 
+        // Assert to check whether test has been redirected to shopping cart using previously declared variables.
         Assert.assertEquals(expectedCartTitle, actualCartTitle);
     }
 
     @Given("user is on a product page")
     public void user_is_on_a_product_page() {
-        driver.get("http://automationpractice.com/index.php?id_category=5&controller=category");
+
+        // Load driver onto a product category page and add an item to basket. In this case a product from the T-shirt category.
+        driver.get(DataSet.tShirtCategoryURL);
 
     }
 
     @When("the user clicks {string} button")
     public void the_user_clicks_button(String string) {
-        Actions actions = new Actions(driver);
         TShirtPage.TShirtAddToCartButton(driver).click();
     }
 
     @Then("the user should see that product within their shopping cart")
     public void the_user_should_see_that_product_within_their_shopping_cart() {
+
+        // Go to shopping cart.
         TShirtPage.ProceedToCheckoutButton(driver).click();
 
+        // Check test is on the shopping cart page.
         String expectedCartTitle = "SHOPPING-CART SUMMARY";
         CartPage.CartTitle(driver).getText().contains(expectedCartTitle);
 
+        // Check to see if selected item is within the shopping cart.
         String expectedProductName = "Faded Short Sleeve T-shirts";
         String  actualProductName = driver.findElement(By.xpath("//*[@id=\"product_1_1_0_0\"]/td[2]/p/a")).getText();
         Assert.assertEquals(expectedProductName, actualProductName);
@@ -113,6 +118,12 @@ public class CartStepDefinition {
 //
 //        x = CartPage.DropdownCart(driver).findElement(By.cssSelector("a[title='View my shopping cart']")).getText();
 //        System.out.println(x);
+
+//        CartPage.ProceedToCheckout(driver).click();
+
+
+//        String link = CartPage.ProceedToCheckout(driver).getAttribute("href");
+//        driver.navigate().to(link);
     }
 
 }

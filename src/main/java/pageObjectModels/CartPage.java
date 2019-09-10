@@ -42,5 +42,10 @@ public class CartPage {
         return element;
     }
 
+    public static WebElement ProceedToCheckout(WebDriver driver) {
+        element = driver.findElement(By.cssSelector("a[title='Proceed to checkout']"));
+        return element;
+    }
+
 
 }
