@@ -112,18 +112,6 @@ public class CartStepDefinition {
         String sValue = CartPage.TotalProductPrice(driver).getText().replaceAll("\\$", "");
         double dValue = Double.parseDouble(sValue);
         Assert.assertEquals(33.02, dValue, 0.001);
-
-//        String x = CartPage.DropdownCart(driver).findElement(By.cssSelector("a[title='View my shopping cart']")).getText();
-//        System.out.println(x);
-//
-//        x = CartPage.DropdownCart(driver).findElement(By.cssSelector("a[title='View my shopping cart']")).getText();
-//        System.out.println(x);
-
-//        CartPage.ProceedToCheckout(driver).click();
-
-
-//        String link = CartPage.ProceedToCheckout(driver).getAttribute("href");
-//        driver.navigate().to(link);
     }
 
 }
