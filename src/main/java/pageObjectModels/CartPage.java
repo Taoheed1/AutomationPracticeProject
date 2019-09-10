@@ -26,7 +26,8 @@ public class CartPage {
 
     public static WebElement QuantityWindow(WebDriver driver) {
 //        element = driver.findElement(By.xpath("/html/body/div/div[2]/div/div[3]/div/div[2]/table/tbody/tr/td[5]/input[1]"));
-        element = driver.findElement(By.className("cart_quantity text-center"));
+//        element = driver.findElement(By.className("cart_quantity_input form-control grey"));
+        element = driver.findElement(By.cssSelector("input[name='quantity_1_1_0_0']"));
         return element;
     }
 

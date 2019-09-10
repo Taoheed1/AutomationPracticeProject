@@ -18,9 +18,9 @@ public class BaseStepDefinition {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-//    @After
-//    public void tearDown() {
-//        driver.quit();
-//    }
+    @After
+    public void tearDown() {
+        driver.quit();
+    }
 
 }

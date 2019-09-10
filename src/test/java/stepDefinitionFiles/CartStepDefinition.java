@@ -96,15 +96,17 @@ public class CartStepDefinition {
     public void the_user_clicks_the_button_on_a_product_to_add_another_item_to_the_basket(String string) {
         // Write code here that turns the phrase above into concrete actions
         CartPage.AddItemButton(driver).click();
+        driver.navigate().refresh();
     }
 
     @Then("the total number of products within the basket should increase")
     public void the_total_number_of_products_within_the_basket_should_increase() {
         // Write code here that turns the phrase above into concrete actions
 //        throw new cucumber.api.PendingException();
-
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         String value = CartPage.QuantityWindow(driver).getAttribute("value");
         Assert.assertEquals("2", value);
+//        System.out.println(value);
 
     }
 
