@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class RegistrationObjectModel {
 
     public static WebElement email (WebDriver driver) {
@@ -26,40 +28,37 @@ public class RegistrationObjectModel {
         return driver.findElement(By.xpath("//*[@id=\"noSlide\"]/h1"));
     }
 
-//    public static WebElement title_mr_radio_buttons (WebDriver driver)
-//    {
-//       return driver.findElement(By.id("id_gender1"));
-//
-//    }
-//
+    public static WebElement title_mr_radio_buttons(WebDriver driver) {
+
+        //return driver.findElement(By.cssSelector("div[id='uniform-id_gender1']"));
+//        return (WebElement) driver.findElements(By.name("id_gender1"));//gets the class group called color
+        return (WebElement) driver.findElement(By.xpath("//*[@id=\"id_gender1\"]"));
+
+    }
+
+
 //    public static WebElement title_mrs_radio_buttons (WebDriver driver)
 //    {
 //       return driver.findElement(By.id("id_gender1"));
 //    }
 //
-//
-//    public static WebElement firstname (WebDriver driver)
-//    {
-//        return driver.findElement(By.className("customer_firstname"));
-//    }
-//
-//
-//
-//    public static WebElement secondname (WebDriver driver)
-//    {
+
+    public static WebElement firstname (WebDriver driver)
+    {
+//        return driver.findElement(By.cssSelector("input[id='customer_firstname']"));
+        return driver.findElement(By.xpath("//*[@id=\"customer_firstname\"]"));
+    }
+
+    public static WebElement secondname (WebDriver driver)
+    {
 //      return driver.findElement(By.className("customer_lastname"));
-//    }
-//
-//    public static WebElement secondemail (WebElement emailelement)
-//    {
-//        emailelement= driver.findElement(By.id("email"));
-//        return emailelement;
-//    }
-//
-//    public static WebElement fpassword (WebDriver driver)
-//    {
-//        return driver.findElement(By.className("passwd"));
-//    }
+      return driver.findElement((By.xpath("//*[@id=\"customer_lastname\"]")));
+    }
+
+    public static WebElement fpassword (WebDriver driver)
+    {
+        return driver.findElement(By.className("passwd"));
+    }
 
 
 //    public static WebElement [] birth ()

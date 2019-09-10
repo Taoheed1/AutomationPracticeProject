@@ -52,20 +52,28 @@ public class RegistrationStepDefinition {
     public void redirect_Them_into_detail_page() {
 
         String subheading = "YOUR PERSONAL INFORMATION";
-       Assert.assertEquals(subheading,RegistrationObjectModel.sub_heading(driver));
+//       Assert.assertEquals(subheading,RegistrationObjectModel.sub_heading(driver).toString());
+        System.out.println("hello from then 1");
     }
+
 
 
     @When("user enters valid details in to fields")
     public void user_enters_valid_details_in_to_fields() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+
+
+
+        RegistrationObjectModel.title_mr_radio_buttons(driver).click();
+        RegistrationObjectModel.firstname(driver).sendKeys("john");
+        RegistrationObjectModel.secondname(driver).sendKeys("albert");
+       // RegistrationObjectModel.
     }
 
     @Then("confirm that an appropriate username message has appeared")
     public void confirm_that_an_appropriate_username_message_has_appeared() {
         // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+//        throw new cucumber.api.PendingException();
+        System.out.println("Hello from then 2");
     }
 
 }
