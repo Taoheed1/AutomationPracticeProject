@@ -31,5 +31,16 @@ public class CartPage {
         return element;
     }
 
+    public static WebElement TotalProductPrice(WebDriver driver) {
+        element = driver.findElement(By.xpath("//*[@id=\"total_product_price_1_1_0\"]"));
+        return element;
+    }
+
+    public static WebElement DropdownCart(WebDriver driver) {
+//        element = driver.findElement(By.xpath("/html/body/div/div[1]/header/div[3]/div/div/div[3]/div"));
+        element = driver.findElement(By.cssSelector("div[class='shopping_cart']"));
+        return element;
+    }
+
 
 }
