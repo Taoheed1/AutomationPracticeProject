@@ -1,0 +1,7 @@
+# Ignore the .idea folder
+/.idea
+
+.idea/workspace.xml
+
+# Ignore the target folder
+/target
