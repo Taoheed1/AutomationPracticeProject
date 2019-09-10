@@ -3,6 +3,7 @@ package stepDefinitionFiles;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pageObjectModels.AddressPaymentPage;
@@ -11,6 +12,7 @@ import pageObjectModels.ShippingPaymentPage;
 import pageObjectModels.TShirtPage;
 import testData.DataSet;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PaymentStepDefinition {
@@ -76,6 +78,7 @@ public PaymentStepDefinition(BaseStepDefinition baseStepDefinition) {
     public void i_should_see_an_alert_when_I_try_to_continue() {
         boolean windowAppeared = ShippingPaymentPage.termsAndConditionsAlertWindow(driver).isDisplayed();
 //        assertEquals(True, windowAppeared);
+        assertTrue(windowAppeared);
     }
 
     @When("the terms of service button has been clicked")
