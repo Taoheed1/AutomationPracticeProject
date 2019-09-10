@@ -6,6 +6,9 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pageObjectModels.AddressPaymentPage;
+import pageObjectModels.CartPage;
+import pageObjectModels.ShippingPaymentPage;
+import pageObjectModels.TShirtPage;
 import testData.DataSet;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,7 +28,7 @@ public PaymentStepDefinition(BaseStepDefinition baseStepDefinition) {
 
     @Given("I register an account")
     public void i_register_an_account() {
-        RegistrationObjectModel.registration(driver);
+//        RegistrationObjectModel.registration(driver);
     }
 
     @Given("I log in with the account details")
@@ -47,7 +50,7 @@ public PaymentStepDefinition(BaseStepDefinition baseStepDefinition) {
 
     @When("I click to proceed to payment")
     public void i_click_to_proceed_to_payment() {
-        CartPage.ProceedToCheckout.click();
+        CartPage.ProceedToCheckout(driver).click();
     }
 
     @Then("I should be taken to the address page")
@@ -63,19 +66,20 @@ public PaymentStepDefinition(BaseStepDefinition baseStepDefinition) {
     @When("I go to the shipping page")
     public void i_go_to_the_shipping_page() {
         // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        AddressPaymentPage.proceedToCheckout(driver);
     }
 
     @When("the terms of service radio button has not been clicked")
     public void the_terms_of_service_radio_button_has_not_been_clicked() {
         // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        ShippingPaymentPage.termsAndConditionsCheckbox(driver);
     }
 
     @Then("I should see an alert when I try to continue")
     public void i_should_see_an_alert_when_I_try_to_continue() {
         // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        boolean windowAppeared = ShippingPaymentPage.termsAndConditionsAlertWindow(driver).isDisplayed();
+//        assertEquals(True, windowAppeared);
     }
 
     @When("the terms of service button has been clicked")

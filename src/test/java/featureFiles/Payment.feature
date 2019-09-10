@@ -34,13 +34,13 @@ Feature: Payment
   And the terms of service button has been clicked
   Then I should be directed to the next page
 
-#  Meh
+#
 #  Given that I am a user
 #  When I am on the shipping page
 #  And I click to read the terms of service
 #  Then the terms of service page should appear
 
-#  Meh
+#
 #  Given that I am a user
 #  When I am on the shipping page
 #  Then I should be able to see the price of the delivery
