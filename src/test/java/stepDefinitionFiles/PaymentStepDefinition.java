@@ -33,7 +33,6 @@ public PaymentStepDefinition(BaseStepDefinition baseStepDefinition) {
 
     @Given("I log in with the account details")
     public void i_log_in_with_the_account_details() {
-        // Write code here that turns the phrase above into concrete actions
 //        LoginPage.emailAddress(driver).sendkeys("something");
         driver.findElement(By.id("email")).sendKeys("");
         driver.findElement(By.id("passwd")).sendKeys("");
@@ -65,32 +64,27 @@ public PaymentStepDefinition(BaseStepDefinition baseStepDefinition) {
 
     @When("I go to the shipping page")
     public void i_go_to_the_shipping_page() {
-        // Write code here that turns the phrase above into concrete actions
         AddressPaymentPage.proceedToCheckout(driver);
     }
 
     @When("the terms of service radio button has not been clicked")
     public void the_terms_of_service_radio_button_has_not_been_clicked() {
-        // Write code here that turns the phrase above into concrete actions
         ShippingPaymentPage.termsAndConditionsCheckbox(driver);
     }
 
     @Then("I should see an alert when I try to continue")
     public void i_should_see_an_alert_when_I_try_to_continue() {
-        // Write code here that turns the phrase above into concrete actions
         boolean windowAppeared = ShippingPaymentPage.termsAndConditionsAlertWindow(driver).isDisplayed();
 //        assertEquals(True, windowAppeared);
     }
 
     @When("the terms of service button has been clicked")
     public void the_terms_of_service_button_has_been_clicked() {
-        // Write code here that turns the phrase above into concrete actions
         throw new cucumber.api.PendingException();
     }
 
     @Then("I should be directed to the next page")
     public void i_should_be_directed_to_the_next_page() {
-        // Write code here that turns the phrase above into concrete actions
         throw new cucumber.api.PendingException();
     }
 }
