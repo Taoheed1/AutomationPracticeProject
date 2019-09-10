@@ -29,4 +29,20 @@ public class HomePage {
     public static WebElement tShirtCategoryName(WebDriver driver){
         return driver.findElement(By.className("cat-name"));
     }
+
+    public static WebElement NewsLetterField(WebDriver driver){
+        return driver.findElement(By.id("newsletter-input"));
+    }
+
+    public static WebElement successAlert(WebDriver driver){
+        return driver.findElement(By.cssSelector("p[class='alert alert-success']"));
+    }
+
+    public static WebElement NewsletterButton(WebDriver driver){
+        return driver.findElement(By.cssSelector("button[name='submitNewsletter']"));
+    }
+
+    public static WebElement errorAlert(WebDriver driver){
+        return driver.findElement(By.cssSelector("p[class='alert alert-danger']"));
+    }
 }
