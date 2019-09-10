@@ -2,37 +2,37 @@ Feature: Payment
   Description: User is able to pay for products currently in their shopping basket and if desired specify payment methods
   and delivery or billing addresses
 
-  Background: User is logged in and has items in their basket
-    Given that I navigate to the register page
-    And I register an account
-    And I log in with the account details
-    When I add an item to the basket
-    And I click to proceed to payment
-    Then I should be taken to the address page
-
-#Scenario: User is able to confirm the purchase of items in their basket
+#  Background: User is logged in and has items in their basket
+#    Given that I navigate to the register page
+#    And I register an account
+#    And I log in with the account details
+#    When I add an item to the basket
+#    And I click to proceed to payment
+#    Then I should be taken to the address page
 #
-#  Given that I am a user
-#  When I have items in my basket
-#  And I click proceed to checkout
-#  Then I should see the deliveries page
-
-    Scenario: Terms and condition have not been accepted
-#  Kind of Important
-#  Given that I am a user
-    Given that I am on the address page
-#  When I am on the shipping page
-    When I go to the shipping page
-  And the terms of service radio button has not been clicked
-  Then I should see an alert when I try to continue
-
-#  Kind of Important
-      Scenario: Terms and conditions have been accepted
-#  Given that I am a user
-        Given that I am on the address page
-  When I go to the shipping page
-  And the terms of service button has been clicked
-  Then I should be directed to the next page
+##Scenario: User is able to confirm the purchase of items in their basket
+##
+##  Given that I am a user
+##  When I have items in my basket
+##  And I click proceed to checkout
+##  Then I should see the deliveries page
+#
+#    Scenario: Terms and condition have not been accepted
+##  Kind of Important
+##  Given that I am a user
+#    Given that I am on the address page
+##  When I am on the shipping page
+#    When I go to the shipping page
+#  And the terms of service radio button has not been clicked
+#  Then I should see an alert when I try to continue
+#
+##  Kind of Important
+#      Scenario: Terms and conditions have been accepted
+##  Given that I am a user
+#        Given that I am on the address page
+#  When I go to the shipping page
+#  And the terms of service button has been clicked
+#  Then I should be directed to the next page
 
 #
 #  Given that I am a user
