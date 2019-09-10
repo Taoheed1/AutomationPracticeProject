@@ -4,15 +4,20 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import pageObjectModels.RegistrationObjectModel;
 import testData.DataSet;
+
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import static junit.framework.TestCase.assertEquals;
 
 public class RegistrationStepDefinition {
-    WebDriver driver=null;
+    private WebDriver driver = null;
 
     public RegistrationStepDefinition (BaseStepDefinition baseStepDefinition){
         this.driver = baseStepDefinition.driver;
@@ -23,25 +28,12 @@ public class RegistrationStepDefinition {
         driver.get(DataSet.registerPageURL);
     }
 
-//    @When("User enters a valid details into fields")
-//    public void user_enters_a_valid_details_into_fields() {
-//
-//
-//
-//     RegistrationObjectModel.firstname(null).sendKeys("john");
-//     RegistrationObjectModel. create_an_account_button(null).click();
-//
-////        RegistrationObjectModel.title_mr_radio_buttons(null).click();
-////        RegistrationObjectModel.title_mrs_radio_buttons(null).click();
-//     //RegistrationObjectModel.secondname(null).sendKeys("kool");
-//
-//    }
-//
 @When("User enters a valid email")
     public void user_enters_a_valid_email() {
-        RegistrationObjectModel.email(driver).sendKeys("johndoe123@test.com");
-
-        }
+    Random rand = new Random();
+    int max=1000;
+    RegistrationObjectModel.email(driver).sendKeys("johndoe" + rand.nextInt(max)+"@test.com");
+    }
 
     @When("User clicks on create account button")
     public void user_clicks_on_create_account_button() {
@@ -51,29 +43,25 @@ public class RegistrationStepDefinition {
     @Then("redirect Them into detail page")
     public void redirect_Them_into_detail_page() {
 
-        String subheading = "YOUR PERSONAL INFORMATION";
-//       Assert.assertEquals(subheading,RegistrationObjectModel.sub_heading(driver).toString());
-        System.out.println("hello from then 1");
+        Assert.assertEquals("You're wrong","YOUR PERSONAL INFORMATIO",RegistrationObjectModel.sub_heading(driver).getText());
+
     }
 
-
-
     @When("user enters valid details in to fields")
-    public void user_enters_valid_details_in_to_fields() {
-
-
-
-        RegistrationObjectModel.title_mr_radio_buttons(driver).click();
-        RegistrationObjectModel.firstname(driver).sendKeys("john");
-        RegistrationObjectModel.secondname(driver).sendKeys("albert");
-       // RegistrationObjectModel.
+    public void user_enters_valid_details_in_to_fields() throws InterruptedException{
+        RegistrationObjectModel.registration(driver);
     }
 
     @Then("confirm that an appropriate username message has appeared")
-    public void confirm_that_an_appropriate_username_message_has_appeared() {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new cucumber.api.PendingException();
-        System.out.println("Hello from then 2");
+    public void confirm_that_an_appropriate_username_message_has_appeared()  {
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
+        Assert.assertEquals("Not all good","MY ACCOUNT",driver.findElement(By.xpath("//*[@id=\"center_column\"]/h1")).getText());
     }
 
 }
