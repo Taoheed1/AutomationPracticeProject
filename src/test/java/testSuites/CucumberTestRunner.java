@@ -7,8 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/java/featureFiles",
-        glue = "stepDefinitionFiles",
-        tags = "@SmokeTesting"
+        glue = "stepDefinitionFiles"
 )
 
 public class CucumberTestRunner {

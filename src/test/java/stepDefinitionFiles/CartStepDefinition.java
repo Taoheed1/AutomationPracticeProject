@@ -6,6 +6,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import pageObjectModels.CartPage;
 import pageObjectModels.TShirtPage;
@@ -68,14 +69,17 @@ public class CartStepDefinition {
 
     @Given("user is viewing the shopping cart page")
     public void user_is_viewing_the_shopping_cart_page() {
+
+        // Begin test by going to a product page and adding item to basket. In this case the T-shirt category.
         driver.get("http://automationpractice.com/index.php?id_category=5&controller=category");
         TShirtPage.TShirtAddToCartButton(driver).click();
+
+        // Proceed to shopping cart page.
         TShirtPage.ProceedToCheckoutButton(driver).click();
-//        TShirtPage.ContinueShoppingButton(driver).click();
+
+        // Check that test is now on shopping cart page
         String expectedCartTitle = "SHOPPING-CART SUMMARY";
         CartPage.CartTitle(driver).getText().contains(expectedCartTitle);
-
-
 
     }
 
@@ -84,33 +88,31 @@ public class CartStepDefinition {
 
         String sValue = CartPage.TotalProductPrice(driver).getText().replaceAll("\\$", "");
         double dValue = Double.parseDouble(sValue);
+        Assert.assertEquals(16.51, dValue, 0.001);
+
+        // Click the add item button.
         CartPage.AddItemButton(driver).click();
+        // refresh driver
         driver.navigate().refresh();
     }
 
     @Then("the total number of products within the basket should increase")
     public void the_total_number_of_products_within_the_basket_should_increase() {
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        // Get string of the quantity of item and compare to expected
         String value = CartPage.QuantityWindow(driver).getAttribute("value");
         Assert.assertEquals("2", value);
+
+        // Get string of the total (price of the item * quantity) and compare
         String sValue = CartPage.TotalProductPrice(driver).getText().replaceAll("\\$", "");
         double dValue = Double.parseDouble(sValue);
         Assert.assertEquals(33.02, dValue, 0.001);
 
-        String x = CartPage.DropdownCart(driver).findElement(By.cssSelector("a[title='View my shopping cart']")).getText();
-        System.out.println(x);
-
-        Actions actions = new Actions(driver);
-        actions.moveToElement( CartPage.DropdownCart(driver));
-//        String attribute = CartPage.DropdownCart(driver).findElement(By.cssSelector(".ajax_cart_block_remove_link")).getAttribute("href");
-//        CartPage.DropdownCart(driver).findElement(By.cssSelector("a[href='http://automationpractice.com/index.php?controller=cart&delete%3D1%26id_product%3D%7B%24product_id_product%7D%26ipa%3D%7B%24product_id_product_attribute%7D%26id_address_delivery%3D%7B%24product_id_address_delivery%7D%26token%3D%7B%24static_token%7D=']")).click();
-        String link = CartPage.DropdownCart(driver).findElement(By.cssSelector("a[title='remove this product from my cart']")).getAttribute("href");
-        driver.get(link);
-        System.out.println(link);
-        driver.navigate().refresh();
-//        System.out.println(attribute);
-        x = CartPage.DropdownCart(driver).findElement(By.cssSelector("a[title='View my shopping cart']")).getText();
-        System.out.println(x);
+//        String x = CartPage.DropdownCart(driver).findElement(By.cssSelector("a[title='View my shopping cart']")).getText();
+//        System.out.println(x);
+//
+//        x = CartPage.DropdownCart(driver).findElement(By.cssSelector("a[title='View my shopping cart']")).getText();
+//        System.out.println(x);
     }
 
 }
