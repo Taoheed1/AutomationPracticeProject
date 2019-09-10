@@ -1,7 +1,7 @@
 Feature: Registration
   Description: User logs in to the travel website
 
-  @SmokeTesting
+  //@SmokeTesting
   Scenario: User succesfully registers (Happy path)
 
     Given User is on the registration page
