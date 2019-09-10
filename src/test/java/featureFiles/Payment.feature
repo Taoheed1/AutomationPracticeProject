@@ -1,6 +1,6 @@
-Feature: Payment
-  Description: User is able to pay for products currently in their shopping basket and if desired specify payment methods
-  and delivery or billing addresses
+#Feature: Payment
+#  Description: User is able to pay for products currently in their shopping basket and if desired specify payment methods
+#  and delivery or billing addresses
 
 #  Background: User is logged in and has items in their basket
 #    Given that I navigate to the register page
