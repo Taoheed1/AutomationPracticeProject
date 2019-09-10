@@ -7,7 +7,6 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import pageObjectModels.HomePage;
 import testData.DataSet;
-import utilities.DriverUtilities;
 
 public class CategoryStepDefinition {
 
