@@ -50,7 +50,23 @@ public class HomePage {
         return driver.findElement(By.cssSelector("a[class='quick-view-mobile'][href='http://automationpractice.com/index.php?id_product=4&controller=product']"));
     }
 
-    public static WebElement quickViewButton(WebDriver driver){
+    public static WebElement quickViewButton(WebDriver driver) {
         return driver.findElement(By.cssSelector("a[class='quick-view'][href='http://automationpractice.com/index.php?id_product=4&controller=product'][rel='http://automationpractice.com/index.php?id_product=4&controller=product']"));
+    }
+
+    public static WebElement NewsLetterField(WebDriver driver){
+        return driver.findElement(By.id("newsletter-input"));
+    }
+
+    public static WebElement successAlert(WebDriver driver){
+        return driver.findElement(By.cssSelector("p[class='alert alert-success']"));
+    }
+
+    public static WebElement NewsletterButton(WebDriver driver){
+        return driver.findElement(By.cssSelector("button[name='submitNewsletter']"));
+    }
+
+    public static WebElement errorAlert(WebDriver driver){
+        return driver.findElement(By.cssSelector("p[class='alert alert-danger']"));
     }
 }
