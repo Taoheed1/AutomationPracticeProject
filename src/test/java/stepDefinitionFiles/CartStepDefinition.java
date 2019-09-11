@@ -6,13 +6,13 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjectModels.CartPage;
 import pageObjectModels.TShirtPage;
 import testData.DataSet;
 
-import java.awt.event.ActionListener;
 import java.util.concurrent.TimeUnit;
 
 public class CartStepDefinition {
@@ -63,7 +63,19 @@ public class CartStepDefinition {
 
         // Check test is on the shopping cart page.
         String expectedCartTitle = "SHOPPING-CART SUMMARY";
-        CartPage.CartTitle(driver).getText().contains(expectedCartTitle);
+//        CartPage.CartTitle(driver).getText().contains(expectedCartTitle);
+
+        driver.navigate().refresh();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        boolean actualResult;
+
+        if (CartPage.CartTitle(driver).getText().contains(expectedCartTitle)) {
+            actualResult = true;
+        } else {
+            actualResult = false;
+        }
+
+        Assert.assertEquals(true, actualResult);
 
         // Check to see if selected item is within the shopping cart.
         String expectedProductName = "Faded Short Sleeve T-shirts";
@@ -84,7 +96,19 @@ public class CartStepDefinition {
 
         // Check that test is now on shopping cart page
         String expectedCartTitle = "SHOPPING-CART SUMMARY";
-        CartPage.CartTitle(driver).getText().contains(expectedCartTitle);
+//        CartPage.CartTitle(driver).getText().contains(expectedCartTitle);
+
+        driver.navigate().refresh();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        boolean actualResult;
+
+        if (CartPage.CartTitle(driver).getText().contains(expectedCartTitle)) {
+            actualResult = true;
+        } else {
+            actualResult = false;
+        }
+
+        Assert.assertEquals(true, actualResult);
 
     }
 
@@ -112,6 +136,43 @@ public class CartStepDefinition {
         String sValue = CartPage.TotalProductPrice(driver).getText().replaceAll("\\$", "");
         double dValue = Double.parseDouble(sValue);
         Assert.assertEquals(33.02, dValue, 0.001);
+    }
+
+    @Given("a user has added items to their cart")
+    public void a_user_has_added_items_to_their_cart() {
+        driver.get("http://automationpractice.com/index.php?id_category=5&controller=category");
+        TShirtPage.TShirtAddToCartButton(driver).click();
+
+        // Proceed to shopping cart page.
+        TShirtPage.ProceedToCheckoutButton(driver).click();
+    }
+
+    @When("the user clicks the {string} button on the dropdown next to the item")
+    public void the_user_clicks_the_button_on_the_dropdown_next_to_the_item(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        driver.navigate().refresh();
+        Actions actions = new Actions(driver);
+        actions.moveToElement(CartPage.DropdownCart(driver)).perform();
+        WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div[1]/header/div[3]/div/div/div[3]/div/div/div/div/dl/dt/span/a")));
+        CartPage.DropdownCart(driver).findElement(By.xpath("/html/body/div/div[1]/header/div[3]/div/div/div[3]/div/div/div/div/dl/dt/span/a")).click();
+
+    }
+
+    @Then("the item should be cleared from the shopping cart")
+    public void the_item_should_be_cleared_from_the_shopping_cart() {
+
+        driver.navigate().refresh();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        boolean actualResult;
+
+        if (CartPage.DropdownCart(driver).getText().contains("empty")) {
+            actualResult = true;
+        } else {
+            actualResult = false;
+        }
+
+        Assert.assertEquals(true, actualResult);
     }
 
 }

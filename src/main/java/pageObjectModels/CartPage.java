@@ -34,7 +34,7 @@ public class CartPage {
     }
 
     public static WebElement DropdownCart(WebDriver driver) {
-        element = driver.findElement(By.cssSelector("div[class='shopping_cart']"));
+        element = driver.findElement(By.cssSelector("a[title='View my shopping cart']"));
         return element;
     }
 
