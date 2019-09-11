@@ -53,4 +53,5 @@ public class CategoryStepDefinition {
     public void redirect_them_to_T_shirt_category() {
         Assert.assertEquals("T-SHIRTS ", HomePage.tShirtCategoryName(driver).getText());
     }
+
 }
