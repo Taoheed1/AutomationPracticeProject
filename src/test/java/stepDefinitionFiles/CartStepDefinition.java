@@ -10,6 +10,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjectModels.CartPage;
+import pageObjectModels.DressesPage;
+import pageObjectModels.HomePage;
 import pageObjectModels.TShirtPage;
 import testData.DataSet;
 
@@ -173,6 +175,33 @@ public class CartStepDefinition {
         }
 
         Assert.assertEquals(true, actualResult);
+    }
+
+    @Given("user has added one item to the cart and is at the cart page")
+    public void user_has_added_one_item_to_the_cart_and_is_at_the_cart_page() {
+        driver.get("http://automationpractice.com/index.php?id_category=5&controller=category");
+        TShirtPage.TShirtAddToCartButton(driver).click();
+
+        // Proceed to shopping cart page.
+        TShirtPage.ProceedToCheckoutButton(driver).click();
+    }
+
+    @When("the user decides to go and find another item to add to cart")
+    public void the_user_decides_to_go_and_find_another_item_to_add_to_cart() {
+        HomePage.dressesCategory(driver).click();
+        DressesPage.addItemToCart(driver).click();
+        DressesPage.proceedToCheckout(driver).click();
+    }
+
+    @Then("when the user returns to the cart the correct number and total price of items appear")
+    public void when_the_user_returns_to_the_cart_the_correct_number_and_total_price_of_items_appear() {
+        // Write code here that turns the phrase above into concrete actions
+//        throw new cucumber.api.PendingException();
+
+        double expectedTotal = 44.51;
+        String actualTotalString = CartPage.TotalPrice(driver).getText().replaceAll("\\$", "");
+        double actualTotal = Double.parseDouble(actualTotalString);
+        Assert.assertEquals(expectedTotal, actualTotal, 0.001);
     }
 
 }

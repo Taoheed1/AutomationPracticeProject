@@ -25,3 +25,8 @@ Feature: Shopping Cart
     When the user clicks the "x" button on the dropdown next to the item
     Then the item should be cleared from the shopping cart
 
+  @SmokeTesting @New
+  Scenario: User wishes to add multiple items to shopping cart
+    Given user has added one item to the cart and is at the cart page
+    When the user decides to go and find another item to add to cart
+    Then when the user returns to the cart the correct number and total price of items appear

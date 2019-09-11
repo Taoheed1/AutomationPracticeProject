@@ -43,4 +43,9 @@ public class CartPage {
         return element;
     }
 
+    public static WebElement TotalPrice(WebDriver driver) {
+        element = driver.findElement(By.cssSelector("span[id='total_price']"));
+        return element;
+    }
+
 }
