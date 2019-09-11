@@ -86,7 +86,6 @@ public class RegistrationStepDefinition {
     @Then("present an error message")
     public void present_an_error_message() {
         Assert.assertEquals("Not all good","An account using this email address has already been registered. Please enter a valid password or request a new one.",driver.findElement(By.xpath("//*[@id=\"create_account_error\"]/ol/li")).getText());
-
     }
 
 
