@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 import static junit.framework.TestCase.assertEquals;
 
 public class RegistrationStepDefinition {
+
     private WebDriver driver = null;
     private int random_generated;
 
