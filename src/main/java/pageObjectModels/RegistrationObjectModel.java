@@ -87,6 +87,11 @@ public class RegistrationObjectModel {
         return driver.findElement(By.xpath("//*[@id=\"submitAccount\"]/span"));
     }
 
+    public static WebElement logout_registration_account (WebDriver driver) {
+       return driver.findElement(By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[2]/a"));
+    }
+
+
 
     public static void registration(WebDriver driver) {
 
@@ -104,10 +109,6 @@ public class RegistrationObjectModel {
         Select dayDropdown = new Select(dayDropdownElement);
         dayDropdown.selectByValue("4");
 
-//        WebElement monthDropdownElement = driver.findElement(By.id("months"));
-//        Select monthDropdown = new Select(monthDropdownElement);
-//        monthDropdown.selectByValue("8");
-
         Select monthDropdown = new Select(RegistrationObjectModel.birth_month(driver));
         monthDropdown.selectByValue("8");
 
@@ -122,5 +123,35 @@ public class RegistrationObjectModel {
         RegistrationObjectModel.aliasaddress(driver).sendKeys("moadd");
         RegistrationObjectModel.registerbutton(driver).click();
     }
+
+    public static void registration_without_postcode(WebDriver driver) {
+        RegistrationObjectModel.title_mr_radio_buttons(driver).click();
+        RegistrationObjectModel.firstname(driver).sendKeys("John");
+        RegistrationObjectModel.secondname(driver).sendKeys("Albert");
+        RegistrationObjectModel.fpassword(driver).sendKeys("123456");
+        RegistrationObjectModel.full_address(driver).sendKeys("alfred address, PopBox, Companyname, hi");
+        RegistrationObjectModel.addresscity(driver).sendKeys("Los Angeles");
+        RegistrationObjectModel.addresscity(driver).sendKeys("Los Angeles");
+        RegistrationObjectModel.mobilephone(driver).sendKeys("12345678912");
+        //RegistrationObjectModel.email(driver).sendKeys("mohammad566@gmail.co.uk");
+
+        WebElement dayDropdownElement = driver.findElement(By.id("days"));
+        Select dayDropdown = new Select(dayDropdownElement);
+        dayDropdown.selectByValue("4");
+
+        Select monthDropdown = new Select(RegistrationObjectModel.birth_month(driver));
+        monthDropdown.selectByValue("8");
+
+        WebElement yearDropdownElement = driver.findElement(By.id("years"));
+        Select yearDropdown = new Select(yearDropdownElement);
+        yearDropdown.selectByValue("1997");
+
+        WebElement stateDropdownElement = driver.findElement(By.id("id_state"));
+        Select stateDropdown = new Select(stateDropdownElement);
+        stateDropdown.selectByIndex(3);
+
+        RegistrationObjectModel.aliasaddress(driver).sendKeys("moadd");
+    }
+
 
 }
