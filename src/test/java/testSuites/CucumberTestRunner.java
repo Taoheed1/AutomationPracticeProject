@@ -9,7 +9,6 @@ import org.junit.runner.RunWith;
         features = "src/test/java/featureFiles",
         glue = "stepDefinitionFiles",
         plugin = {"html:target/cucumber-html-reports"}
-        //tags= "@SmokeTesting"
 )
 
 public class CucumberTestRunner {
