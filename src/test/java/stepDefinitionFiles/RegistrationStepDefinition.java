@@ -10,6 +10,7 @@ import pageObjectModels.RegistrationObjectModel;
 import testData.DataSet;
 
 public class RegistrationStepDefinition {
+
     private WebDriver driver = null;
     private String email = null;
 
