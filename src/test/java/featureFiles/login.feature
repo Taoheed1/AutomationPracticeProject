@@ -7,12 +7,12 @@ Feature: login into account
   Scenario: User types wrong username
     When login with an invalid username
     Then authentication errorOne will display
-  @JubinTest
+
   Scenario: User types wrong password
     When login with an invalid password
     Then authentication errorTwo will display
 
-  Scenario: User forgets username
+  Scenario: User forgets password
     When user clicks on forget password
     And user provides username and retrive password
     Then sends the confirmation email
