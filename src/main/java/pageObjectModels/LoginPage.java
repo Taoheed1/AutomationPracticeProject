@@ -70,7 +70,7 @@ public class LoginPage {
     //error check3
     public static WebElement successfullSent(WebDriver driver) {
         element = driver.findElement(By.xpath("//*[@id=\"form_forgotpassword\"]/fieldset/p/button"));
-//*[@id="center_column"]/div/p/text()
+
         return element;
     }
 

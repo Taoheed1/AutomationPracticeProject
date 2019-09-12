@@ -12,18 +12,18 @@ Feature: login into account
     When login with an invalid password
     Then authentication errorTwo will display
 
-#  Scenario: User forgets username
-#    When user clicks on forget password
-#    And user provides username and retrive password
-#    Then sends the confirmation email
-#
-#  Scenario: User wants to login to account (successfully)
-#    When  login with valid username and password
-#    Then the user should see username in the account page
-#
-#  Scenario: User logout
-#    When user clicks logout
-#    Then user account should logout
+  Scenario: User forgets username
+    When user clicks on forget password
+    And user provides username and retrive password
+    Then sends the confirmation email
+
+  Scenario: User wants to login to account (successfully)
+    When  login with valid username and password
+    Then the user should see username in the account page
+
+  Scenario: User logout
+    When user clicks logout
+    Then user account should logout
 
 
 
