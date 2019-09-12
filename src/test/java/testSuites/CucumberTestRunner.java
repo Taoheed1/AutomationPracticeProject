@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/java/featureFiles",
         glue = "stepDefinitionFiles"
+        ,tags = {"@JubinTest"}
 )
 
 public class CucumberTestRunner {

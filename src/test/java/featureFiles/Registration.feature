@@ -1,6 +1,6 @@
 Feature: Registration
   Description: User logs in to the travel website
-
+  #@JubinTest
   Scenario: User succesfully registers (Happy path)
 
     Given User is on the registration page

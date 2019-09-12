@@ -13,5 +13,6 @@ public class DataSet {
     public static String tShirtCategoryURL = homeURL + "?id_category=5&controller=category";
     public static String dressesURL = "http://automationpractice.com/index.php?id_category=8&controller=category";
     public static String email = "mohammad" + rand_int + "@gmail.co.uk";
+    public static String loginPage = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
 
 }
