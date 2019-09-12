@@ -64,23 +64,17 @@ public class CartStepDefinition {
         TShirtPage.ProceedToCheckoutButton(driver).click();
 
         // Check test is on the shopping cart page.
-        String expectedCartTitle = "SHOPPING-CART SUMMARY";
         driver.navigate().refresh();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        boolean actualResult;
 
-        if (CartPage.CartTitle(driver).getText().contains(expectedCartTitle)) {
-            actualResult = true;
-        } else {
-            actualResult = false;
-        }
+        CartPage cartPage = new CartPage();
 
-        Assert.assertEquals(true, actualResult);
+        String expectedCartTitle = "SHOPPING-CART SUMMARY";
+        Assert.assertTrue(cartPage.CompareTextFromElement(CartPage.CartTitle(driver), expectedCartTitle));
 
         // Check to see if selected item is within the shopping cart.
         String expectedProductName = "Faded Short Sleeve T-shirts";
-        String actualProductName = CartPage.ProductName(driver).getText();
-        Assert.assertEquals(expectedProductName, actualProductName);
+        Assert.assertTrue(cartPage.CompareTextFromElement(CartPage.ProductName(driver), expectedProductName));
 
     }
 
@@ -95,19 +89,11 @@ public class CartStepDefinition {
         TShirtPage.ProceedToCheckoutButton(driver).click();
 
         // Check that test is now on shopping cart page
-        String expectedCartTitle = "SHOPPING-CART SUMMARY";
-
         driver.navigate().refresh();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        boolean actualResult;
-
-        if (CartPage.CartTitle(driver).getText().contains(expectedCartTitle)) {
-            actualResult = true;
-        } else {
-            actualResult = false;
-        }
-
-        Assert.assertEquals(true, actualResult);
+        String expectedCartTitle = "SHOPPING-CART SUMMARY";
+        CartPage cartPage = new CartPage();
+        Assert.assertTrue(cartPage.CompareTextFromElement(CartPage.CartTitle(driver), expectedCartTitle));
 
     }
 
@@ -164,15 +150,9 @@ public class CartStepDefinition {
 
         driver.navigate().refresh();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        boolean actualResult;
 
-        if (CartPage.DropdownCart(driver).getText().contains("empty")) {
-            actualResult = true;
-        } else {
-            actualResult = false;
-        }
-
-        Assert.assertEquals(true, actualResult);
+        CartPage cartPage = new CartPage();
+        Assert.assertTrue(cartPage.CompareTextFromElement(CartPage.DropdownCart(driver), "empty"));
     }
 
     @Given("user has added one item to the cart and is at the cart page")

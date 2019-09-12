@@ -58,4 +58,15 @@ public class CartPage {
         return element;
     }
 
+    public boolean CompareTextFromElement(WebElement element, String string) {
+        boolean actualResult;
+
+        if (element.getText().contains(string)) {
+            actualResult = true;
+        } else {
+            actualResult = false;
+        }
+
+        return actualResult;
+    }
 }
