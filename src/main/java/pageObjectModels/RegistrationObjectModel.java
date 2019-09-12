@@ -10,7 +10,10 @@ import java.util.Random;
 public class RegistrationObjectModel {
 
     private static WebElement element = null;
-
+    public static String succesful_registration_message_xpath = "//*[@id=\"center_column\"]/h1";
+    public static String User_enters_the_same_email_for_registration_xpath = "//*[@id=\"create_account_error\"]/ol/li";
+    public static String user_leaves_the_email_field_blank_xpath = "//*[@id=\"create_account_error\"]/ol/li";
+    public static String wrong_postcode_format_error_message_xpath = "//*[@id=\"center_column\"]/div/ol/li";
 
     public static WebElement email(WebDriver driver) {
         return driver.findElement(By.id("email_create"));
@@ -91,8 +94,6 @@ public class RegistrationObjectModel {
        return driver.findElement(By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[2]/a"));
     }
 
-
-
     public static void registration(WebDriver driver) {
 
 
@@ -133,7 +134,6 @@ public class RegistrationObjectModel {
         RegistrationObjectModel.addresscity(driver).sendKeys("Los Angeles");
         RegistrationObjectModel.addresscity(driver).sendKeys("Los Angeles");
         RegistrationObjectModel.mobilephone(driver).sendKeys("12345678912");
-        //RegistrationObjectModel.email(driver).sendKeys("mohammad566@gmail.co.uk");
 
         WebElement dayDropdownElement = driver.findElement(By.id("days"));
         Select dayDropdown = new Select(dayDropdownElement);
@@ -151,7 +151,8 @@ public class RegistrationObjectModel {
         stateDropdown.selectByIndex(3);
 
         RegistrationObjectModel.aliasaddress(driver).sendKeys("moadd");
-    }
 
+
+    }
 
 }

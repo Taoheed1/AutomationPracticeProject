@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseStepDefinition {
 
-    protected WebDriver driver = null;
+    public WebDriver driver = null;
 
     @Before
     public void setUp() throws Exception {

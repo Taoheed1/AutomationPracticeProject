@@ -54,7 +54,7 @@ public class RegistrationStepDefinition {
             e.printStackTrace();
         }
 
-        Assert.assertEquals("Test failed due to text mismatch", "MY ACCOUNT", driver.findElement(By.xpath("//*[@id=\"center_column\"]/h1")).getText());
+        Assert.assertEquals("Test failed due to text mismatch", "MY ACCOUNT", driver.findElement(By.xpath(RegistrationObjectModel.succesful_registration_message_xpath)).getText());
         RegistrationObjectModel.logout_registration_account(driver).click();
     }
 
@@ -77,7 +77,7 @@ public class RegistrationStepDefinition {
 
     @Then("present an error message")
     public void present_an_error_message() {
-        Assert.assertEquals("Test failed due to text mismatch", "An account using this email address has already been registered. Please enter a valid password or request a new one.", driver.findElement(By.xpath("//*[@id=\"create_account_error\"]/ol/li")).getText());
+        Assert.assertEquals("Test failed due to text mismatch", "An account using this email address has already been registered. Please enter a valid password or request a new one.", driver.findElement(By.xpath(RegistrationObjectModel.User_enters_the_same_email_for_registration_xpath)).getText());
     }
 
     //Third scenario
@@ -100,21 +100,8 @@ public class RegistrationStepDefinition {
     public void present_an_error_message_three() {
 
         String error_message="Invalid email address.";
-        Assert.assertEquals(error_message,driver.findElement(By.xpath("//*[@id=\"create_account_error\"]/ol/li")).getText());
+        Assert.assertEquals(error_message,driver.findElement(By.xpath(RegistrationObjectModel.user_leaves_the_email_field_blank_xpath)).getText());
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     //fourth feature
     @Given("User is on the registration page-four")
@@ -143,8 +130,9 @@ public class RegistrationStepDefinition {
         RegistrationObjectModel.addresspostcode(driver).sendKeys("1000");
         RegistrationObjectModel.registerbutton(driver).click();
         String postcode_error_message="The Zip/Postal code you've entered is invalid. It must follow this format: 00000";
-        Assert.assertEquals(postcode_error_message,driver.findElement(By.xpath("//*[@id=\"center_column\"]/div/ol/li")).getText());
+        Assert.assertEquals(postcode_error_message,driver.findElement(By.xpath(RegistrationObjectModel.wrong_postcode_format_error_message_xpath)).getText());
     }
+
 
 
 
