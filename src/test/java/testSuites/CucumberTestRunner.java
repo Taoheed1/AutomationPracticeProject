@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/java/featureFiles",
         glue = "stepDefinitionFiles"
-//        ,tags = {"@Test6"}
+        ,plugin = {"html:target/cucumber-html-reports"}
 )
 
 public class CucumberTestRunner {

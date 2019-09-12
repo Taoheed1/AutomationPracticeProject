@@ -59,7 +59,8 @@ public PaymentStepDefinition(BaseStepDefinition baseStepDefinition) {
 
     @When("I add an item to the basket")
     public void i_add_an_item_to_the_basket() {
-        driver.get(DataSet.tShirtCategoryURL);
+//        driver.get(DataSet.tShirtCategoryURL);
+        driver.findElement(By.xpath(DataSet.tShirtLinkXpath)).click();
         TShirtPage.TShirtAddToCartButton(driver).click();
     }
 
