@@ -65,8 +65,6 @@ public class CartStepDefinition {
 
         // Check test is on the shopping cart page.
         String expectedCartTitle = "SHOPPING-CART SUMMARY";
-//        CartPage.CartTitle(driver).getText().contains(expectedCartTitle);
-
         driver.navigate().refresh();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         boolean actualResult;
@@ -81,7 +79,7 @@ public class CartStepDefinition {
 
         // Check to see if selected item is within the shopping cart.
         String expectedProductName = "Faded Short Sleeve T-shirts";
-        String  actualProductName = driver.findElement(By.xpath("//*[@id=\"product_1_1_0_0\"]/td[2]/p/a")).getText();
+        String actualProductName = CartPage.ProductName(driver).getText();
         Assert.assertEquals(expectedProductName, actualProductName);
 
     }
@@ -90,7 +88,7 @@ public class CartStepDefinition {
     public void user_is_viewing_the_shopping_cart_page() {
 
         // Begin test by going to a product page and adding item to basket. In this case the T-shirt category.
-        driver.get("http://automationpractice.com/index.php?id_category=5&controller=category");
+        driver.get(DataSet.tShirtCategoryURL);
         TShirtPage.TShirtAddToCartButton(driver).click();
 
         // Proceed to shopping cart page.
@@ -98,7 +96,6 @@ public class CartStepDefinition {
 
         // Check that test is now on shopping cart page
         String expectedCartTitle = "SHOPPING-CART SUMMARY";
-//        CartPage.CartTitle(driver).getText().contains(expectedCartTitle);
 
         driver.navigate().refresh();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -142,7 +139,7 @@ public class CartStepDefinition {
 
     @Given("a user has added items to their cart")
     public void a_user_has_added_items_to_their_cart() {
-        driver.get("http://automationpractice.com/index.php?id_category=5&controller=category");
+        driver.get(DataSet.tShirtCategoryURL);
         TShirtPage.TShirtAddToCartButton(driver).click();
 
         // Proceed to shopping cart page.
@@ -156,8 +153,9 @@ public class CartStepDefinition {
         Actions actions = new Actions(driver);
         actions.moveToElement(CartPage.DropdownCart(driver)).perform();
         WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div[1]/header/div[3]/div/div/div[3]/div/div/div/div/dl/dt/span/a")));
-        CartPage.DropdownCart(driver).findElement(By.xpath("/html/body/div/div[1]/header/div[3]/div/div/div[3]/div/div/div/div/dl/dt/span/a")).click();
+
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(CartPage.RemoveItemDropdown(driver)));
+        CartPage.RemoveItemDropdown(driver).click();
 
     }
 
@@ -179,7 +177,7 @@ public class CartStepDefinition {
 
     @Given("user has added one item to the cart and is at the cart page")
     public void user_has_added_one_item_to_the_cart_and_is_at_the_cart_page() {
-        driver.get("http://automationpractice.com/index.php?id_category=5&controller=category");
+        driver.get(DataSet.tShirtCategoryURL);
         TShirtPage.TShirtAddToCartButton(driver).click();
 
         // Proceed to shopping cart page.
@@ -195,8 +193,6 @@ public class CartStepDefinition {
 
     @Then("when the user returns to the cart the correct number and total price of items appear")
     public void when_the_user_returns_to_the_cart_the_correct_number_and_total_price_of_items_appear() {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new cucumber.api.PendingException();
 
         double expectedTotal = 44.51;
         String actualTotalString = CartPage.TotalPrice(driver).getText().replaceAll("\\$", "");
