@@ -20,10 +20,12 @@ import java.util.concurrent.TimeUnit;
 public class CartStepDefinition {
 
     private WebDriver driver = null;
+    private String expectedCartTitle = "SHOPPING-CART SUMMARY";
 
     public CartStepDefinition(BaseStepDefinition baseStepDefinition) {
         this.driver = baseStepDefinition.driver;
     }
+
 
     @Given("a user is on the home page")
     public void a_user_is_on_the_home_page() {
@@ -69,7 +71,6 @@ public class CartStepDefinition {
 
         CartPage cartPage = new CartPage();
 
-        String expectedCartTitle = "SHOPPING-CART SUMMARY";
         Assert.assertTrue(cartPage.CompareTextFromElement(CartPage.CartTitle(driver), expectedCartTitle));
 
         // Check to see if selected item is within the shopping cart.
@@ -91,7 +92,6 @@ public class CartStepDefinition {
         // Check that test is now on shopping cart page
         driver.navigate().refresh();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        String expectedCartTitle = "SHOPPING-CART SUMMARY";
         CartPage cartPage = new CartPage();
         Assert.assertTrue(cartPage.CompareTextFromElement(CartPage.CartTitle(driver), expectedCartTitle));
 
