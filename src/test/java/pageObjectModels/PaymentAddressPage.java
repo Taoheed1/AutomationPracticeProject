@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class AddressPaymentPage {
+public class PaymentAddressPage {
 
 
     private static WebElement element = null;
