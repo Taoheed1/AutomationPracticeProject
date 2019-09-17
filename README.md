@@ -60,7 +60,7 @@ The tag here means that only features that are tagged with @Test1 will be run
 
 Plugins  
 ```bash
-The following plugins were used in order to more easily write tests in accordance with BDD
+The following plugins were used to more easily write tests that follow BDD
 Cucumber is used to run tests that describe defined scenarios
-Gherkin is a language that is used to define feature files and then convert them into test stubs
+Gherkin is a language that is used to define feature files and convert them into tests
 ```
